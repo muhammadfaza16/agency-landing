@@ -1,0 +1,31 @@
+---
+// index.astro — Main landing page
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Ticker from '../components/Ticker.astro';
+import About from '../components/About.astro';
+import Services from '../components/Services.astro';
+import Works from '../components/Works.astro';
+import Pricing from '../components/Pricing.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout>
+  <Nav />
+  <main>
+    <Hero />
+    <Ticker />
+    <About />
+    <Services />
+    <Works />
+    <Pricing />
+    <Testimonials />
+    <FAQ />
+    <CTA />
+  </main>
+  <Footer />
+</BaseLayout>

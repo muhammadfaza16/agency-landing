@@ -1,0 +1,133 @@
+---
+// FAQ.astro — Accordion FAQ section
+import { faqs } from '../data/faqs';
+---
+
+<section id="faq" class="section">
+  <div class="container">
+    <div class="faq-wrapper">
+      <span class="section-label">// 006 — FAQ</span>
+      <h2 class="faq-heading">
+        Yang sering<br />
+        <em>ditanyain.</em>
+      </h2>
+
+      <div class="faq-list">
+        {faqs.map((faq, i) => (
+          <div class="faq-item" data-faq-index={i}>
+            <button class="faq-trigger" aria-expanded="false">
+              <span class="faq-question">{faq.q}</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-heading {
+    margin-bottom: 3rem;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faq-item {
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .faq-item:first-child {
+    border-top: 0.5px solid var(--border);
+  }
+
+  .faq-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: var(--fg);
+  }
+
+  .faq-question {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--fg);
+  }
+
+  .faq-icon {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    color: var(--fg3);
+    flex-shrink: 0;
+    transition: transform 0.3s ease, color 0.3s ease;
+    width: 1.5rem;
+    text-align: center;
+  }
+
+  .faq-item.is-open .faq-icon {
+    transform: rotate(45deg);
+    color: var(--accent);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+  }
+
+  .faq-item.is-open .faq-answer {
+    max-height: 300px;
+  }
+
+  .faq-answer p {
+    padding: 0 0 1.5rem 0;
+    font-size: 0.92rem;
+    color: var(--fg2);
+    line-height: 1.75;
+  }
+</style>
+
+<script>
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach((item) => {
+    const trigger = item.querySelector('.faq-trigger');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+
+      // Close all items first (one open at a time)
+      faqItems.forEach((otherItem) => {
+        otherItem.classList.remove('is-open');
+        const otherTrigger = otherItem.querySelector('.faq-trigger');
+        if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+      });
+
+      // Toggle current item
+      if (!isOpen) {
+        item.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>

@@ -1,0 +1,61 @@
+---
+// Ticker.astro — CSS-only horizontal scrolling marquee
+const items = [
+  'Web App',
+  'Mobile App',
+  'AI Integration',
+  'Landing Page',
+  'Dashboard',
+  'E-Commerce',
+  'SaaS MVP',
+  'Internal Tool',
+  'API Backend',
+];
+---
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    {/* Doubled for seamless loop */}
+    {[...items, ...items].map((item, i) => (
+      <Fragment>
+        <span class="ticker-item">{item}</span>
+        <span class="ticker-sep">✦</span>
+      </Fragment>
+    ))}
+  </div>
+</div>
+
+<style>
+  .ticker {
+    width: 100%;
+    overflow: hidden;
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 1rem 0;
+    background-color: var(--bg);
+  }
+
+  .ticker-track {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    white-space: nowrap;
+    animation: ticker-scroll 30s linear infinite;
+    width: max-content;
+  }
+
+  .ticker-item {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--fg3);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .ticker-sep {
+    color: var(--accent);
+    font-size: 0.65rem;
+    flex-shrink: 0;
+  }
+</style>

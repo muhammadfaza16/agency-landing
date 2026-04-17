@@ -1,0 +1,107 @@
+---
+// Services.astro — 3x2 service grid
+import { services } from '../data/services';
+---
+
+<section id="services" class="section">
+  <div class="container">
+    <span class="section-label">// 002 — Services</span>
+    <h2 class="services-heading">
+      Yang bisa<br />
+      <em>gue bantu.</em>
+    </h2>
+
+    <div class="services-grid">
+      {services.map((service) => (
+        <div class="service-card">
+          <span class="service-icon">{service.icon}</span>
+          <h3 class="service-name">{service.name}</h3>
+          <p class="service-desc">{service.desc}</p>
+          <div class="service-stack">
+            {service.stack.map((tech) => (
+              <span class={`service-tag ${service.accentStack ? 'service-tag--accent' : ''}`}>
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-heading {
+    margin-bottom: 3rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  .service-card {
+    padding: 2rem;
+    border: 0.5px solid var(--border);
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .service-card:hover {
+    background-color: var(--bg2);
+  }
+
+  .service-icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .service-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--fg);
+  }
+
+  .service-desc {
+    font-size: 0.88rem;
+    color: var(--fg2);
+    line-height: 1.65;
+    flex-grow: 1;
+  }
+
+  .service-stack {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .service-tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    border: 0.5px solid var(--border2);
+    color: var(--fg3);
+  }
+
+  .service-tag--accent {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  @media (max-width: 960px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 540px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,151 @@
+---
+// CTA.astro — Call to action with email form
+---
+
+<section id="cta" class="cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="section-label">// 007 — Let's talk</span>
+      <h2 class="cta-heading">
+        Punya ide?<br />
+        <em>Kita bikin nyata.</em>
+      </h2>
+      <p class="cta-sub">
+        Ceritain apa yang mau lo bangun. Gue bales dalam 24 jam.
+      </p>
+
+      <form class="cta-form" id="cta-form">
+        <input
+          type="email"
+          name="email"
+          id="cta-email"
+          class="cta-input"
+          placeholder="lo@email.com"
+          required
+          autocomplete="email"
+        />
+        <button type="submit" class="btn-primary cta-submit">
+          Kirim →
+        </button>
+      </form>
+
+      <div class="cta-success" id="cta-success">
+        <span class="cta-success-icon">✓</span>
+        <span class="cta-success-text">Terkirim! Gue follow up dalam 24 jam.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    padding: 6rem 0;
+    background-color: var(--bg2);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .cta-inner {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-inner .section-label {
+    display: block;
+  }
+
+  .cta-heading {
+    margin-bottom: 1rem;
+  }
+
+  .cta-sub {
+    font-size: 1rem;
+    color: var(--fg2);
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-form {
+    display: flex;
+    gap: 0;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .cta-input {
+    flex: 1;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    padding: 0.85rem 1.25rem;
+    background-color: var(--bg);
+    color: var(--fg);
+    border: 0.5px solid var(--border2);
+    border-radius: 0;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .cta-input::placeholder {
+    color: var(--fg3);
+  }
+
+  .cta-input:focus {
+    border-color: var(--accent);
+  }
+
+  .cta-submit {
+    flex-shrink: 0;
+    border: 0.5px solid var(--accent);
+  }
+
+  .cta-success {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 0.5px solid var(--accent);
+  }
+
+  .cta-success.is-visible {
+    display: flex;
+  }
+
+  .cta-success-icon {
+    color: var(--accent);
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .cta-success-text {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--accent);
+  }
+
+  @media (max-width: 540px) {
+    .cta-form {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .cta-submit {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('cta-form') as HTMLFormElement | null;
+  const success = document.getElementById('cta-success');
+
+  if (form && success) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      form.style.display = 'none';
+      success.classList.add('is-visible');
+    });
+  }
+</script>

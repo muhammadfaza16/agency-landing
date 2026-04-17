@@ -1,0 +1,183 @@
+---
+import { SEO } from 'astro-seo';
+import '../styles/global.css';
+
+const {
+  title = 'KD. — Solo Software House',
+  description = 'Software house satu orang. Web app, SaaS MVP, dan AI integration dengan delivery 3–6 minggu. Vibe coding meets production quality.',
+  ogImage = '/og-image.png',
+  canonical = Astro.url.href,
+} = Astro.props;
+
+const currentYear = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Fonts: Syne, Instrument Serif, DM Mono -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@1&family=Syne:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- SEO -->
+    <SEO
+      title={title}
+      description={description}
+      openGraph={{
+        basic: {
+          title: title,
+          type: 'website',
+          image: ogImage,
+          url: canonical,
+        },
+        optional: {
+          locale: 'id_ID',
+          siteName: 'KD. — Solo Software House',
+        },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        creator: '@youhandle',
+      }}
+      extend={{
+        link: [{ rel: 'canonical', href: canonical }],
+        meta: [
+          { name: 'robots', content: 'index, follow' },
+          { name: 'author', content: 'KD' },
+          { name: 'geo.region', content: 'ID-JT' },
+          { name: 'geo.placename', content: 'Semarang' },
+        ],
+      }}
+    />
+
+    <!-- JSON-LD Structured Data -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'LocalBusiness',
+            '@id': 'https://yourdomain.com/#business',
+            name: 'KD. — Solo Software House',
+            description:
+              'Web app, SaaS MVP, landing page, dan AI integration.',
+            url: 'https://yourdomain.com',
+            logo: 'https://yourdomain.com/favicon.svg',
+            image: 'https://yourdomain.com/og-image.png',
+            founder: {
+              '@type': 'Person',
+              name: 'KD',
+              jobTitle: 'Software Developer',
+              sameAs: [
+                'https://linkedin.com/in/yourhandle',
+                'https://github.com/yourhandle',
+              ],
+            },
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Semarang',
+              addressRegion: 'Jawa Tengah',
+              addressCountry: 'ID',
+            },
+            areaServed: {
+              '@type': 'Country',
+              name: 'Indonesia',
+            },
+            priceRange: 'Rp 8.000.000 – Rp 50.000.000',
+            telephone: '+6281234567890',
+            email: 'hello@yourdomain.com',
+            openingHoursSpecification: {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: [
+                'Monday',
+                'Tuesday',
+                'Wednesday',
+                'Thursday',
+                'Friday',
+              ],
+              opens: '09:00',
+              closes: '18:00',
+            },
+            hasOfferCatalog: {
+              '@type': 'OfferCatalog',
+              name: 'Software Development Services',
+              itemListElement: [
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: 'Web App & SaaS MVP Development',
+                    description:
+                      'Full-stack web application dan SaaS MVP dengan delivery 3–6 minggu',
+                  },
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: 'AI Feature Integration',
+                    description:
+                      'Integrasi AI ke produk yang sudah ada — chatbot, summarizer, analyzer',
+                  },
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: 'Landing Page & Marketing Site',
+                    description:
+                      'Landing page yang convert dengan performa dan animasi proper',
+                  },
+                },
+              ],
+            },
+          },
+          {
+            '@type': 'WebSite',
+            '@id': 'https://yourdomain.com/#website',
+            url: 'https://yourdomain.com',
+            name: 'KD. — Solo Software House',
+            inLanguage: 'id-ID',
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Vibe coding itu kualitasnya bisa dipercaya?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Vibe coding bukan berarti asal prompt. Setiap baris kode di-review manual, debug secara langsung, dan struktur proyek dijaga agar bersih dan maintainable. AI mempercepat proses — bukan menggantikan judgment.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Kode-nya gue punya setelah proyek selesai?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: '100%. Full ownership — kode, repo, domain, hosting credentials. Tidak ada vendor lock-in.',
+                },
+              },
+            ],
+          },
+        ],
+      })}
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

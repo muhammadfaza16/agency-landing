@@ -1,0 +1,111 @@
+---
+// About.astro — The Deal section
+const steps = [
+  { num: '01', title: 'Discovery call', detail: '1 jam, ceritain ide lo' },
+  { num: '02', title: 'Scope + Proposal', detail: '2–3 hari kerja' },
+  { num: '03', title: 'Build & Iterate', detail: 'Sprint mingguan + update rutin' },
+  { num: '04', title: 'Launch + Handoff', detail: 'Deploy, transfer, done' },
+];
+---
+
+<section id="about" class="section">
+  <div class="container about-grid">
+    <!-- Left: Copy -->
+    <div class="about-copy">
+      <span class="section-label">// 001 — The deal</span>
+      <h2>
+        Bukan agency.<br />
+        <em>Bukan freelancer.</em><br />
+        Sesuatu di antaranya.
+      </h2>
+      <p class="about-text">
+        Gue satu orang yang kerja bareng AI. Output-nya setara tim kecil — tapi lo ngobrol langsung
+        sama yang nulis kode-nya. Nggak ada project manager, nggak ada handoff yang bikin delay.
+        Lo dapet produk yang beneran jalan, bukan prototipe yang harus dirombak lagi.
+      </p>
+      <p class="about-text">
+        Komunikasi langsung, iterasi cepat, dan delivery yang bisa lo pegang timeline-nya.
+      </p>
+    </div>
+
+    <!-- Right: Process Steps -->
+    <div class="about-steps">
+      {steps.map((step) => (
+        <div class="step">
+          <span class="step-num">{step.num}</span>
+          <div class="step-content">
+            <span class="step-title">{step.title}</span>
+            <span class="step-detail">{step.detail}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text {
+    font-size: 1rem;
+    color: var(--fg2);
+    line-height: 1.8;
+    margin-top: 1.25rem;
+  }
+
+  .about-steps {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .step:first-child {
+    border-top: 0.5px solid var(--border);
+  }
+
+  .step-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    padding-top: 0.15rem;
+  }
+
+  .step-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .step-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--fg);
+  }
+
+  .step-detail {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--fg3);
+  }
+
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+</style>

@@ -1,0 +1,161 @@
+---
+// Works.astro — Selected works / portfolio
+import { works } from '../data/works';
+---
+
+<section id="works" class="section">
+  <div class="container">
+    <span class="section-label">// 003 — Selected works</span>
+    <h2 class="works-heading">
+      Yang sudah<br />
+      <em>dikapalkan.</em>
+    </h2>
+
+    <div class="works-grid">
+      {works.map((work) => (
+        <article class="work-card">
+          <div class={`work-thumb work-thumb--${work.color}`}>
+            <div class="work-thumb-inner">
+              <span class="work-thumb-icon">↗</span>
+            </div>
+          </div>
+          <div class="work-body">
+            <span class="work-category">{work.category}</span>
+            <h3 class="work-title">{work.title}</h3>
+            <p class="work-desc">{work.desc}</p>
+            <div class="work-footer">
+              <span class="work-result">{work.result}</span>
+              <span class="work-arrow">↗</span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .works-heading {
+    margin-bottom: 3rem;
+  }
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+
+  .work-card {
+    border: 0.5px solid var(--border);
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+  }
+
+  .work-card:hover {
+    background-color: var(--bg2);
+  }
+
+  .work-card:hover .work-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  .work-card:hover .work-thumb-inner {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Thumbnail area */
+  .work-thumb {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .work-thumb--accent {
+    background: linear-gradient(135deg, rgba(200, 255, 0, 0.08), rgba(200, 255, 0, 0.02));
+  }
+
+  .work-thumb--accent2 {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(255, 107, 53, 0.02));
+  }
+
+  .work-thumb--neutral {
+    background: linear-gradient(135deg, rgba(240, 238, 230, 0.04), rgba(240, 238, 230, 0.01));
+  }
+
+  .work-thumb-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .work-thumb-icon {
+    font-size: 2rem;
+    color: var(--fg2);
+  }
+
+  /* Card body */
+  .work-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .work-category {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    color: var(--fg3);
+    letter-spacing: 0.05em;
+  }
+
+  .work-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--fg);
+  }
+
+  .work-desc {
+    font-size: 0.88rem;
+    color: var(--fg2);
+    line-height: 1.6;
+  }
+
+  .work-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .work-result {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+  }
+
+  .work-arrow {
+    font-size: 1.1rem;
+    color: var(--fg3);
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .work-card:hover .work-arrow {
+    color: var(--accent);
+  }
+
+  @media (max-width: 640px) {
+    .works-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,122 @@
+---
+// Testimonials.astro — Client testimonials
+import { testimonials } from '../data/testimonials';
+---
+
+<section id="testimonials" class="section">
+  <div class="container">
+    <span class="section-label">// 005 — Kata mereka</span>
+    <h2 class="testimonials-heading">
+      Yang bilang<br />
+      <em>beneran kerja.</em>
+    </h2>
+
+    <div class="testimonials-grid">
+      {testimonials.map((t) => (
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            {Array.from({ length: t.stars }).map(() => (
+              <span class="star">★</span>
+            ))}
+          </div>
+          <blockquote class="testimonial-quote">"{t.quote}"</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">{t.initials}</div>
+            <div class="testimonial-info">
+              <span class="testimonial-name">{t.name}</span>
+              <span class="testimonial-role">{t.role}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-heading {
+    margin-bottom: 3rem;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  .testimonial-card {
+    padding: 2rem;
+    background-color: var(--bg2);
+    border: 0.5px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .testimonial-stars {
+    display: flex;
+    gap: 0.15rem;
+  }
+
+  .star {
+    color: var(--accent);
+    font-size: 0.85rem;
+  }
+
+  .testimonial-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--fg);
+    line-height: 1.7;
+    flex-grow: 1;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .testimonial-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--bg3);
+    border: 0.5px solid var(--border2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--fg2);
+    flex-shrink: 0;
+  }
+
+  .testimonial-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .testimonial-name {
+    font-family: var(--font-display);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--fg);
+  }
+
+  .testimonial-role {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--fg3);
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

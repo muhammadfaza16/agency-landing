@@ -1,0 +1,188 @@
+---
+// Nav.astro — Fixed navigation bar
+---
+
+<nav id="main-nav">
+  <div class="nav-inner container">
+    <!-- Logo -->
+    <a href="/" class="nav-logo" aria-label="KD. Homepage">
+      <span class="logo-text">KD</span><span class="logo-dot">.</span>
+    </a>
+
+    <!-- Mobile toggle -->
+    <button
+      class="nav-toggle"
+      id="nav-toggle"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+    >
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <!-- Nav links -->
+    <div class="nav-menu" id="nav-menu">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#works" class="nav-link">Works</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#cta" class="btn-primary nav-cta">Mulai Proyek →</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  #main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(10, 10, 8, 0.8);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+  }
+
+  .nav-logo {
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-text {
+    color: var(--fg);
+  }
+
+  .logo-dot {
+    color: var(--accent);
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg2);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--fg);
+  }
+
+  .nav-cta {
+    font-size: 0.78rem;
+    padding: 0.6rem 1.25rem;
+  }
+
+  /* Mobile toggle button */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 110;
+  }
+
+  .nav-toggle-bar {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background-color: var(--fg);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* Mobile: hamburger active state */
+  .nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(1) {
+    transform: translateY(5.5px) rotate(45deg);
+  }
+
+  .nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(3) {
+    transform: translateY(-5.5px) rotate(-45deg);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 280px;
+      height: 100dvh;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2rem;
+      background-color: var(--bg2);
+      border-left: 0.5px solid var(--border);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .nav-menu.is-open {
+      transform: translateX(0);
+    }
+
+    .nav-link {
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+    }
+
+    .nav-cta {
+      font-size: 0.85rem;
+      padding: 0.75rem 1.5rem;
+      margin-top: 0.5rem;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-menu');
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Close menu on link click
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>

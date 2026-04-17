@@ -1,0 +1,242 @@
+---
+// Pricing.astro — 3-column pricing section
+const plans = [
+  {
+    tier: 'Starter',
+    price: 'Rp 8–15jt',
+    unit: '/proyek',
+    desc: 'Landing page atau marketing site yang convert. Cocok untuk bisnis yang butuh online presence cepat.',
+    features: [
+      'Landing page / marketing site',
+      'Responsive design',
+      'Basic SEO setup',
+      'Deployment + hosting setup',
+      '1 minggu support post-launch',
+    ],
+    timeline: '1–2 minggu',
+    featured: false,
+  },
+  {
+    tier: 'Build',
+    price: 'Rp 20–50jt',
+    unit: '/proyek',
+    desc: 'Full-stack web app dengan auth, database, admin dashboard. Produk yang siap dipakai user.',
+    features: [
+      'Full-stack web application',
+      'Auth + role management',
+      'Database + API',
+      'Admin dashboard',
+      'Payment integration',
+      'Deployment ke production',
+      '2 minggu support post-launch',
+    ],
+    timeline: '3–6 minggu',
+    featured: true,
+    badge: 'Paling sering dipilih',
+  },
+  {
+    tier: 'Retainer',
+    price: 'Rp 10jt',
+    unit: '/bulan',
+    desc: 'Ongoing development untuk produk yang butuh iterasi terus-menerus. Minimum 3 bulan.',
+    features: [
+      '40 jam development/bulan',
+      'Fitur baru + bug fixing',
+      'Performance monitoring',
+      'Priority response (< 4 jam)',
+      'Monthly sprint planning',
+    ],
+    timeline: 'Min. 3 bulan',
+    featured: false,
+  },
+];
+---
+
+<section id="pricing" class="section">
+  <div class="container">
+    <span class="section-label">// 004 — Pricing</span>
+    <h2 class="pricing-heading">
+      Harga yang<br />
+      <em>gue pasang.</em>
+    </h2>
+
+    <div class="pricing-grid">
+      {plans.map((plan) => (
+        <div class={`pricing-card ${plan.featured ? 'pricing-card--featured' : ''}`}>
+          {plan.featured && plan.badge && (
+            <div class="pricing-badge">{plan.badge}</div>
+          )}
+          <div class="pricing-header">
+            <span class="pricing-tier">{plan.tier}</span>
+            <div class="pricing-price">
+              <span class="pricing-amount">{plan.price}</span>
+              <span class="pricing-unit">{plan.unit}</span>
+            </div>
+            <p class="pricing-desc">{plan.desc}</p>
+          </div>
+
+          <div class="pricing-timeline">
+            <span class="pricing-timeline-label">Timeline:</span>
+            <span class="pricing-timeline-value">{plan.timeline}</span>
+          </div>
+
+          <ul class="pricing-features">
+            {plan.features.map((feature) => (
+              <li class="pricing-feature">
+                <span class="pricing-feature-arrow">→</span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="#cta"
+            class={plan.featured ? 'btn-primary pricing-cta' : 'btn-ghost pricing-cta'}
+          >
+            Mulai Proyek →
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing-heading {
+    margin-bottom: 3rem;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  .pricing-card {
+    padding: 2.5rem 2rem;
+    border: 0.5px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .pricing-card--featured {
+    border-top: 2px solid var(--accent);
+  }
+
+  .pricing-badge {
+    position: absolute;
+    top: 0;
+    right: 1.5rem;
+    background-color: var(--accent);
+    color: #0A0A08;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .pricing-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-tier {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--fg3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .pricing-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    margin-top: 0.75rem;
+  }
+
+  .pricing-amount {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--fg);
+    letter-spacing: -0.02em;
+  }
+
+  .pricing-unit {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--fg3);
+  }
+
+  .pricing-desc {
+    font-size: 0.88rem;
+    color: var(--fg2);
+    line-height: 1.6;
+    margin-top: 0.75rem;
+  }
+
+  .pricing-timeline {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-timeline-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--fg3);
+    text-transform: uppercase;
+  }
+
+  .pricing-timeline-value {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex-grow: 1;
+    margin-bottom: 2rem;
+  }
+
+  .pricing-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.88rem;
+    color: var(--fg2);
+    line-height: 1.5;
+  }
+
+  .pricing-feature-arrow {
+    color: var(--accent);
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+
+  .pricing-cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  @media (max-width: 960px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+    }
+  }
+</style>

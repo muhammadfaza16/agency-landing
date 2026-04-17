@@ -1,0 +1,215 @@
+---
+// Hero.astro — Full viewport hero with stat cards
+const currentYear = new Date().getFullYear();
+const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel', 'Tailwind', 'Claude API'];
+---
+
+<section id="hero" class="hero">
+  <div class="container hero-grid">
+    <!-- Left: Copy -->
+    <div class="hero-copy">
+      <div class="availability-badge">
+        <span class="pulse-dot"></span>
+        <span class="badge-text">Available for project — {currentYear}</span>
+      </div>
+
+      <h1>
+        Software<br />
+        <em>built fast,</em><br />
+        shipped real.
+      </h1>
+
+      <p class="hero-sub">
+        Solo developer, AI-assisted. Gue bikin software yang beneran dipakai — bukan prototipe
+        yang cuma dipresentasiin. Dari ide ke produk dalam 3–6 minggu.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#cta" class="btn-primary">Cerita dulu →</a>
+        <a href="#works" class="btn-ghost">Lihat portofolio</a>
+      </div>
+    </div>
+
+    <!-- Right: Stat Cards -->
+    <div class="hero-stats">
+      <div class="stat-card">
+        <span class="stat-label">Delivery time</span>
+        <span class="stat-value">3–6 <em>minggu</em></span>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-label">Projects delivered</span>
+        <span class="stat-value">24<span class="stat-accent">+</span></span>
+      </div>
+
+      <div class="stat-card stat-card-stack">
+        <span class="stat-label">Tech stack</span>
+        <div class="stat-tags">
+          {techStack.map((tech) => (
+            <span class="stat-tag">{tech}</span>
+          ))}
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-label">Status</span>
+        <div class="stat-status">
+          <span class="pulse-dot"></span>
+          <span class="stat-status-text">Available</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  /* Availability badge */
+  .availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    border: 0.5px solid var(--border2);
+    margin-bottom: 2rem;
+  }
+
+  .badge-text {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--fg2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Hero subtext */
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--fg2);
+    line-height: 1.7;
+    margin-top: 1.5rem;
+    max-width: 480px;
+  }
+
+  /* Buttons */
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  /* Stats grid */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .stat-card {
+    padding: 1.75rem;
+    border: 0.5px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .stat-card-stack {
+    grid-column: span 2;
+  }
+
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--fg3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--fg);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .stat-value em {
+    font-size: 1.1rem;
+    color: var(--fg2);
+  }
+
+  .stat-accent {
+    color: var(--accent);
+  }
+
+  .stat-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .stat-tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    padding: 0.3rem 0.6rem;
+    border: 0.5px solid var(--border2);
+    color: var(--fg2);
+  }
+
+  .stat-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .stat-status-text {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero {
+      padding-top: 6rem;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .hero-stats {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-buttons {
+      flex-direction: column;
+    }
+
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-ghost {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+</style>

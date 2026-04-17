@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens (Tailwind v4 @theme) ─── */
+@theme {
+  --color-bg: #0A0A08;
+  --color-bg2: #111110;
+  --color-bg3: #1A1A17;
+  --color-fg: #F0EEE6;
+  --color-fg2: #A8A59A;
+  --color-fg3: #5C5A54;
+  --color-accent: #C8FF00;
+  --color-accent2: #FF6B35;
+
+  --font-display: 'Syne', sans-serif;
+  --font-serif: 'Instrument Serif', serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+/* ─── CSS Custom Properties ─── */
+:root {
+  --bg: #0A0A08;
+  --bg2: #111110;
+  --bg3: #1A1A17;
+  --fg: #F0EEE6;
+  --fg2: #A8A59A;
+  --fg3: #5C5A54;
+  --accent: #C8FF00;
+  --accent2: #FF6B35;
+  --border: rgba(240, 238, 230, 0.08);
+  --border2: rgba(240, 238, 230, 0.15);
+}
+
+/* ─── Base Reset ─── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-display);
+  background-color: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── Typography ─── */
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--fg);
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--fg);
+}
+
+em {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+/* ─── Section Label ─── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+/* ─── Buttons ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.85rem 1.75rem;
+  background-color: var(--accent);
+  color: #0A0A08;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.85rem 1.75rem;
+  background-color: transparent;
+  color: var(--fg2);
+  border: 0.5px solid var(--border2);
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  font-weight: 400;
+}
+
+.btn-ghost:hover {
+  border-color: var(--fg3);
+  color: var(--fg);
+}
+
+/* ─── Container ─── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ─── Section Spacing ─── */
+.section {
+  padding: 6rem 0;
+}
+
+/* ─── Ticker / Marquee Animation ─── */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ─── Pulse Dot Animation ─── */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.3);
+  }
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background-color: var(--accent);
+  color: #0A0A08;
+}
