@@ -1,22 +1,22 @@
 export const faqs = [
   {
-    q: 'Vibe coding itu kualitasnya bisa dipercaya?',
-    a: 'Vibe coding bukan berarti asal prompt dan berharap. Gue tetap review setiap baris kode yang di-generate AI, debug secara manual, dan pastiin struktur proyeknya bersih dan maintainable. AI mempercepat prosesnya — bukan menggantikan judgment-nya.',
+    q: 'Satu orang benar-benar menjamin kualitas produk?',
+    a: 'Kuncinya adalah efisiensi dan standar kualitas yang ketat. Gue membangun setiap komponen dengan arsitektur yang bersih agar produk tetap maintainable dan mudah dikembangkan di masa depan. Fokusnya adalah pada modern development yang presisi, bukan sekadar "asal jalan".',
   },
   {
     q: 'Gimana kalau lo sakit atau ada halangan?',
-    a: 'Ini risiko nyata dari kerja dengan satu orang. Makanya gue selalu kasih buffer waktu di setiap proyek, dan semua kode serta dokumentasi tersimpan di repo yang lo punya akses penuh — jadi kalau ada apa-apa, lo tidak tersandera.',
+    a: 'Bekerja dengan satu orang memang memiliki risiko logistik. Karena itu, Kodacore selalu menyediakan buffer waktu di setiap proyek dan memberikan Anda akses penuh ke repositori sejak hari pertama agar Anda tidak pernah tersandera.',
   },
   {
     q: 'Kode-nya gue punya setelah proyek selesai?',
-    a: '100%. Gue transfer full ownership — kode, repo, domain, hosting credentials. Lo bebas bawa ke developer lain, modifikasi sendiri, atau apapun. Tidak ada vendor lock-in.',
+    a: 'Ya, 100%. Setelah pelunasan, seluruh kepemilikan kode, domain, dan kredensial hosting menjadi hak milik Anda sepenuhnya. Tidak ada vendor lock-in dalam bentuk apa pun.',
   },
   {
     q: 'Bisa minta revisi setelah launch?',
-    a: 'Setiap paket punya periode support post-launch. Di luar itu, lo bisa masuk ke paket retainer atau kita buat kesepakatan per-revisi. Gue tidak menghilang setelah delivery.',
+    a: 'Tentu. Setiap paket memiliki masa dukungan pasca-rilis. Setelah itu, Anda bisa memilih paket retainer untuk iterasi berkelanjutan atau perbaikan fitur sesuai kebutuhan.',
   },
   {
     q: 'Bisa handle proyek dari luar kota?',
-    a: 'Ya, semua proyek dijalankan remote. Lo di Jakarta, Surabaya, Bali, atau bahkan luar negeri — tidak masalah. Komunikasi via WhatsApp, Notion, dan Google Meet.',
+    a: 'Kodacore beroperasi sepenuhnya secara jarak jauh (remote). Komunikasi dilakukan via WhatsApp, Notion, dan meeting video untuk memastikan proyek berjalan lancar dari mana pun Anda berada.',
   },
 ];

@@ -3,8 +3,8 @@ import { SEO } from 'astro-seo';
 import '../styles/global.css';
 
 const {
-  title = 'KD. — Solo Software House',
-  description = 'Software house satu orang. Web app, SaaS MVP, dan AI integration dengan delivery 3–6 minggu. Vibe coding meets production quality.',
+  title = 'Kodacore — Solo Software House',
+  description = 'Solo software house untuk web app, SaaS MVP, dan integrasi AI. Delivery 3–6 minggu dengan kualitas production-ready.',
   ogImage = '/og-image.png',
   canonical = Astro.url.href,
 } = Astro.props;
@@ -44,18 +44,18 @@ const currentYear = new Date().getFullYear();
         },
         optional: {
           locale: 'id_ID',
-          siteName: 'KD. — Solo Software House',
+          siteName: 'Kodacore — Solo Software House',
         },
       }}
       twitter={{
         card: 'summary_large_image',
-        creator: '@youhandle',
+        creator: '@kodacore',
       }}
       extend={{
         link: [{ rel: 'canonical', href: canonical }],
         meta: [
           { name: 'robots', content: 'index, follow' },
-          { name: 'author', content: 'KD' },
+          { name: 'author', content: 'Kodacore' },
           { name: 'geo.region', content: 'ID-JT' },
           { name: 'geo.placename', content: 'Semarang' },
         ],
@@ -70,20 +70,20 @@ const currentYear = new Date().getFullYear();
         '@graph': [
           {
             '@type': 'LocalBusiness',
-            '@id': 'https://yourdomain.com/#business',
-            name: 'KD. — Solo Software House',
+            '@id': 'https://kodacore.id/#business',
+            name: 'Kodacore',
             description:
-              'Web app, SaaS MVP, landing page, dan AI integration.',
-            url: 'https://yourdomain.com',
-            logo: 'https://yourdomain.com/favicon.svg',
-            image: 'https://yourdomain.com/og-image.png',
+              'Solo software house untuk web app, SaaS MVP, dan AI integration.',
+            url: 'https://kodacore.id',
+            logo: 'https://kodacore.id/favicon.svg',
+            image: 'https://kodacore.id/og-image.png',
             founder: {
               '@type': 'Person',
-              name: 'KD',
-              jobTitle: 'Software Developer',
+              name: 'Founder Kodacore',
+              jobTitle: 'Lead Developer',
               sameAs: [
-                'https://linkedin.com/in/yourhandle',
-                'https://github.com/yourhandle',
+                'https://linkedin.com/in/kodacore',
+                'https://github.com/kodacore',
               ],
             },
             address: {
@@ -98,7 +98,7 @@ const currentYear = new Date().getFullYear();
             },
             priceRange: 'Rp 8.000.000 – Rp 50.000.000',
             telephone: '+6281234567890',
-            email: 'hello@yourdomain.com',
+            email: 'hello@kodacore.id',
             openingHoursSpecification: {
               '@type': 'OpeningHoursSpecification',
               dayOfWeek: [
@@ -139,7 +139,7 @@ const currentYear = new Date().getFullYear();
                     '@type': 'Service',
                     name: 'Landing Page & Marketing Site',
                     description:
-                      'Landing page yang convert dengan performa dan animasi proper',
+                      'Landing page yang dirancang untuk konversi tinggi dan performa optimal',
                   },
                 },
               ],
@@ -147,9 +147,9 @@ const currentYear = new Date().getFullYear();
           },
           {
             '@type': 'WebSite',
-            '@id': 'https://yourdomain.com/#website',
-            url: 'https://yourdomain.com',
-            name: 'KD. — Solo Software House',
+            '@id': 'https://kodacore.id/#website',
+            url: 'https://kodacore.id',
+            name: 'Kodacore',
             inLanguage: 'id-ID',
           },
           {
