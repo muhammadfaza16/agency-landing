@@ -27,8 +27,11 @@
       <a href="#services" class="nav-link">Services</a>
       <a href="#works" class="nav-link">Works</a>
       <a href="#pricing" class="nav-link">Pricing</a>
-      <a href="#cta" class="btn-primary nav-cta">Diskusikan Proyek →</a>
+      <a href="#cta" class="btn-primary nav-cta">Mulai Diskusi →</a>
     </div>
+
+    <!-- Mobile backdrop overlay -->
+    <div class="nav-backdrop" id="nav-backdrop"></div>
   </div>
 </nav>
 
@@ -43,13 +46,20 @@
     -webkit-backdrop-filter: blur(12px);
     background-color: rgba(10, 10, 8, 0.8);
     border-bottom: 0.5px solid var(--border);
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  }
+
+  #main-nav.is-scrolled {
+    background-color: rgba(10, 10, 8, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
 
   .nav-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 4rem;
+    height: 4.236rem; /* φ³ */
   }
 
   .nav-logo {
@@ -73,7 +83,7 @@
   .nav-menu {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: var(--sp-lg);
   }
 
   .nav-link {
@@ -83,49 +93,78 @@
     letter-spacing: 0.1em;
     color: var(--fg2);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color 0.25s var(--ease-out-expo);
+    position: relative;
+    padding: 0.25rem 0;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--accent);
+    transition: width 0.3s var(--ease-out-expo);
   }
 
   .nav-link:hover {
     color: var(--fg);
   }
 
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
   .nav-cta {
     font-size: 0.78rem;
-    padding: 0.6rem 1.25rem;
+    padding: 0.618rem 1.25rem;
+    min-height: 40px;
   }
 
   /* Mobile toggle button */
   .nav-toggle {
     display: none;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 4px;
-    z-index: 110;
+    padding: 8px;
+    z-index: 120;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
   }
 
   .nav-toggle-bar {
     display: block;
-    width: 20px;
+    width: 22px;
     height: 1.5px;
     background-color: var(--fg);
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.35s var(--ease-out-expo), opacity 0.25s ease;
+    transform-origin: center;
   }
 
   /* Mobile: hamburger active state */
   .nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(1) {
-    transform: translateY(5.5px) rotate(45deg);
+    transform: translateY(6.5px) rotate(45deg);
   }
 
   .nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(2) {
     opacity: 0;
+    transform: scaleX(0);
   }
 
   .nav-toggle[aria-expanded='true'] .nav-toggle-bar:nth-child(3) {
-    transform: translateY(-5.5px) rotate(-45deg);
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  /* Mobile backdrop */
+  .nav-backdrop {
+    display: none;
   }
 
   /* Responsive */
@@ -138,32 +177,67 @@
       position: fixed;
       top: 0;
       right: 0;
-      width: 280px;
+      width: min(300px, 75vw);
       height: 100dvh;
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
-      gap: 1.5rem;
-      padding: 2rem;
+      gap: var(--sp-md);
+      padding: var(--sp-lg);
       background-color: var(--bg2);
       border-left: 0.5px solid var(--border);
       transform: translateX(100%);
-      transition: transform 0.3s ease;
+      opacity: 0;
+      transition:
+        transform 0.4s var(--ease-out-expo),
+        opacity 0.3s ease;
+      z-index: 110;
     }
 
     .nav-menu.is-open {
       transform: translateX(0);
+      opacity: 1;
     }
 
     .nav-link {
-      font-size: 1rem;
+      font-size: 1.1rem;
       letter-spacing: 0.08em;
+      padding: 0.618rem 0;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link::after {
+      bottom: 0.382rem;
     }
 
     .nav-cta {
-      font-size: 0.85rem;
-      padding: 0.75rem 1.5rem;
-      margin-top: 0.5rem;
+      font-size: 0.88rem;
+      padding: 0.875rem var(--sp-md);
+      margin-top: var(--sp-sm);
+      min-height: 48px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Backdrop overlay */
+    .nav-backdrop {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(10, 10, 8, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 105;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    .nav-backdrop.is-visible {
+      opacity: 1;
+      pointer-events: auto;
     }
   }
 </style>
@@ -171,19 +245,55 @@
 <script>
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('nav-menu');
+  const backdrop = document.getElementById('nav-backdrop');
+  const nav = document.getElementById('main-nav');
 
-  if (toggle && menu) {
+  if (toggle && menu && backdrop) {
+    const openMenu = () => {
+      menu.classList.add('is-open');
+      backdrop.classList.add('is-visible');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeMenu = () => {
+      menu.classList.remove('is-open');
+      backdrop.classList.remove('is-visible');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+
     toggle.addEventListener('click', () => {
-      const isOpen = menu.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', String(isOpen));
+      const isOpen = menu.classList.contains('is-open');
+      isOpen ? closeMenu() : openMenu();
     });
+
+    backdrop.addEventListener('click', closeMenu);
 
     // Close menu on link click
     menu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        menu.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+        closeMenu();
+      }
+    });
+  }
+
+  // Nav scroll behavior — increase blur on scroll
+  if (nav) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          nav.classList.toggle('is-scrolled', window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
     });
   }
 </script>

@@ -5,10 +5,10 @@ import { testimonials } from '../data/testimonials';
 
 <section id="testimonials" class="section">
   <div class="container">
-    <span class="section-label">// 005 — Kata mereka</span>
+    <span class="section-label">// 005 — Testimonials</span>
     <h2 class="testimonials-heading">
-      Yang bilang<br />
-      <em>beneran kerja.</em>
+      Kata<br />
+      <em>mereka.</em>
     </h2>
 
     <div class="testimonials-grid">
@@ -35,7 +35,7 @@ import { testimonials } from '../data/testimonials';
 
 <style>
   .testimonials-heading {
-    margin-bottom: 3rem;
+    margin-bottom: var(--sp-lg);
   }
 
   .testimonials-grid {
@@ -45,12 +45,18 @@ import { testimonials } from '../data/testimonials';
   }
 
   .testimonial-card {
-    padding: 2rem;
+    padding: var(--sp-lg); /* φ² */
     background-color: var(--bg2);
     border: 0.5px solid var(--border);
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .testimonial-card:hover {
+    background-color: var(--bg3);
+    border-color: var(--border2);
   }
 
   .testimonial-stars {
@@ -66,7 +72,7 @@ import { testimonials } from '../data/testimonials';
   .testimonial-quote {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: var(--fg);
     line-height: 1.7;
     flex-grow: 1;
@@ -76,13 +82,13 @@ import { testimonials } from '../data/testimonials';
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding-top: 1rem;
+    padding-top: var(--sp-sm);
     border-top: 0.5px solid var(--border);
   }
 
   .testimonial-avatar {
-    width: 40px;
-    height: 40px;
+    width: 44px; /* touch-friendly */
+    height: 44px;
     border-radius: 50%;
     background-color: var(--bg3);
     border: 0.5px solid var(--border2);
@@ -90,7 +96,7 @@ import { testimonials } from '../data/testimonials';
     align-items: center;
     justify-content: center;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     color: var(--fg2);
     flex-shrink: 0;
   }
@@ -114,9 +120,20 @@ import { testimonials } from '../data/testimonials';
     color: var(--fg3);
   }
 
-  @media (max-width: 768px) {
+  /* Tablet: 2 columns */
+  @media (max-width: 960px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
     .testimonials-grid {
       grid-template-columns: 1fr;
+    }
+
+    .testimonial-card {
+      padding: var(--sp-md);
     }
   }
 </style>

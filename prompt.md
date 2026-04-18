@@ -1,5 +1,3 @@
-# PROMPT — Solo Software House Landing Page
-> Lempar ke Claude Code / Opus as-is. Edit bagian [CAPS] sesuai kebutuhan lo.
 
 ---
 

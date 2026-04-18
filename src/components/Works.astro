@@ -8,7 +8,7 @@ import { works } from '../data/works';
     <span class="section-label">// 003 — Selected works</span>
     <h2 class="works-heading">
       Yang sudah<br />
-      <em>dikapalkan.</em>
+      <em>diluncurkan.</em>
     </h2>
 
     <div class="works-grid">
@@ -36,7 +36,7 @@ import { works } from '../data/works';
 
 <style>
   .works-heading {
-    margin-bottom: 3rem;
+    margin-bottom: var(--sp-lg);
   }
 
   .works-grid {
@@ -47,16 +47,25 @@ import { works } from '../data/works';
 
   .work-card {
     border: 0.5px solid var(--border);
-    transition: background-color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      border-color 0.35s var(--ease-out-expo),
+      transform 0.35s var(--ease-out-expo),
+      box-shadow 0.35s var(--ease-out-expo);
     overflow: hidden;
+    cursor: pointer;
   }
 
   .work-card:hover {
     background-color: var(--bg2);
+    border-color: var(--border2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   }
 
   .work-card:hover .work-arrow {
     transform: translate(3px, -3px);
+    color: var(--accent);
   }
 
   .work-card:hover .work-thumb-inner {
@@ -64,9 +73,9 @@ import { works } from '../data/works';
     transform: scale(1);
   }
 
-  /* Thumbnail area */
+  /* Thumbnail area — golden ratio aspect */
   .work-thumb {
-    height: 200px;
+    aspect-ratio: 1.618 / 1; /* golden ratio */
     position: relative;
     overflow: hidden;
   }
@@ -90,8 +99,8 @@ import { works } from '../data/works';
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transform: scale(0.95);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: scale(0.9);
+    transition: opacity 0.35s ease, transform 0.35s var(--ease-out-expo);
   }
 
   .work-thumb-icon {
@@ -101,10 +110,10 @@ import { works } from '../data/works';
 
   /* Card body */
   .work-body {
-    padding: 1.5rem;
+    padding: var(--sp-md); /* φ¹ */
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--sp-xs);
   }
 
   .work-category {
@@ -125,7 +134,7 @@ import { works } from '../data/works';
   .work-desc {
     font-size: 0.88rem;
     color: var(--fg2);
-    line-height: 1.6;
+    line-height: 1.618; /* golden ratio */
   }
 
   .work-footer {
@@ -139,18 +148,14 @@ import { works } from '../data/works';
 
   .work-result {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: var(--text-sm);
     color: var(--accent);
   }
 
   .work-arrow {
     font-size: 1.1rem;
     color: var(--fg3);
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-
-  .work-card:hover .work-arrow {
-    color: var(--accent);
+    transition: transform 0.3s var(--ease-out-expo), color 0.3s ease;
   }
 
   @media (max-width: 640px) {

@@ -1,22 +1,22 @@
 export const faqs = [
   {
-    q: 'Satu orang benar-benar menjamin kualitas produk?',
-    a: 'Kuncinya adalah efisiensi dan standar kualitas yang ketat. Gue membangun setiap komponen dengan arsitektur yang bersih agar produk tetap maintainable dan mudah dikembangkan di masa depan. Fokusnya adalah pada modern development yang presisi, bukan sekadar "asal jalan".',
+    q: 'Satu orang benar-benar bisa menjamin kualitas?',
+    a: 'Justru karena satu orang, tidak ada miskomunikasi antar tim. Setiap komponen dibangun dengan arsitektur yang bersih dan standar yang ketat, supaya produk tetap mudah dikembangkan ke depannya. Fokusnya bukan "asal jadi" — tapi benar-benar layak pakai.',
   },
   {
-    q: 'Gimana kalau lo sakit atau ada halangan?',
-    a: 'Bekerja dengan satu orang memang memiliki risiko logistik. Karena itu, Kodacore selalu menyediakan buffer waktu di setiap proyek dan memberikan Anda akses penuh ke repositori sejak hari pertama agar Anda tidak pernah tersandera.',
+    q: 'Bagaimana kalau berhalangan atau sakit?',
+    a: 'Risiko ini sudah diperhitungkan. Setiap proyek memiliki buffer waktu bawaan, dan Anda mendapat akses penuh ke repositori sejak hari pertama. Anda tidak akan pernah tersandera oleh satu orang.',
   },
   {
-    q: 'Kode-nya gue punya setelah proyek selesai?',
-    a: 'Ya, 100%. Setelah pelunasan, seluruh kepemilikan kode, domain, dan kredensial hosting menjadi hak milik Anda sepenuhnya. Tidak ada vendor lock-in dalam bentuk apa pun.',
+    q: 'Setelah selesai, kode-nya milik siapa?',
+    a: 'Milik Anda sepenuhnya. Setelah pelunasan, seluruh kode, domain, dan kredensial hosting berpindah tangan. Tidak ada vendor lock-in dalam bentuk apa pun.',
   },
   {
-    q: 'Bisa minta revisi setelah launch?',
-    a: 'Tentu. Setiap paket memiliki masa dukungan pasca-rilis. Setelah itu, Anda bisa memilih paket retainer untuk iterasi berkelanjutan atau perbaikan fitur sesuai kebutuhan.',
+    q: 'Bisa minta revisi setelah rilis?',
+    a: 'Tentu. Setiap paket sudah termasuk masa dukungan pasca-rilis. Setelah itu, tersedia paket retainer untuk pengembangan lanjutan atau perbaikan sesuai kebutuhan.',
   },
   {
-    q: 'Bisa handle proyek dari luar kota?',
-    a: 'Kodacore beroperasi sepenuhnya secara jarak jauh (remote). Komunikasi dilakukan via WhatsApp, Notion, dan meeting video untuk memastikan proyek berjalan lancar dari mana pun Anda berada.',
+    q: 'Bisa dikerjakan jarak jauh?',
+    a: 'Kodacore beroperasi sepenuhnya secara remote. Koordinasi lewat WhatsApp, Notion, dan video call — proyek tetap berjalan lancar dari mana pun.',
   },
 ];

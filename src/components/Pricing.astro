@@ -5,7 +5,7 @@ const plans = [
     tier: 'Starter',
     price: 'Rp 8–15jt',
     unit: '/proyek',
-    desc: 'Solusi untuk landing page atau produk digital dengan lingkup kerja yang terdefinisi jelas.',
+    desc: 'Cocok untuk landing page atau produk digital dengan cakupan yang sudah jelas dari awal.',
     features: [
       'Landing page / marketing site',
       'Responsive design',
@@ -20,7 +20,7 @@ const plans = [
     tier: 'Build',
     price: 'Rp 20–50jt',
     unit: '/proyek',
-    desc: 'Pilihan utama bagi startup untuk membangun MVP atau web app dengan fitur lengkap.',
+    desc: 'Paket andalan untuk startup yang ingin membangun MVP atau web app lengkap.',
     features: [
       'Full-stack web application',
       'Auth + role management',
@@ -38,7 +38,7 @@ const plans = [
     tier: 'Retainer',
     price: 'Rp 10jt',
     unit: '/bulan',
-    desc: 'Dukungan berkelanjutan untuk pengembangan fitur baru, perbaikan, dan optimasi performa.',
+    desc: 'Pendampingan rutin untuk pengembangan fitur, perbaikan bug, dan peningkatan performa.',
     features: [
       '40 jam development/bulan',
       'Fitur baru + bug fixing',
@@ -103,7 +103,7 @@ const plans = [
 
 <style>
   .pricing-heading {
-    margin-bottom: 3rem;
+    margin-bottom: var(--sp-lg);
   }
 
   .pricing-grid {
@@ -113,38 +113,48 @@ const plans = [
   }
 
   .pricing-card {
-    padding: 2.5rem 2rem;
+    padding: var(--sp-lg); /* φ² */
     border: 0.5px solid var(--border);
     display: flex;
     flex-direction: column;
     position: relative;
+    transition: background-color 0.3s ease;
+  }
+
+  .pricing-card:hover {
+    background-color: rgba(240, 238, 230, 0.015);
   }
 
   .pricing-card--featured {
     border-top: 2px solid var(--accent);
+    background: linear-gradient(180deg, rgba(200, 255, 0, 0.03) 0%, transparent 40%);
+  }
+
+  .pricing-card--featured:hover {
+    background: linear-gradient(180deg, rgba(200, 255, 0, 0.05) 0%, rgba(200, 255, 0, 0.01) 40%);
   }
 
   .pricing-badge {
     position: absolute;
     top: 0;
-    right: 1.5rem;
+    right: var(--sp-md);
     background-color: var(--accent);
     color: #0A0A08;
     font-family: var(--font-mono);
     font-size: 0.65rem;
     font-weight: 500;
-    padding: 0.35rem 0.75rem;
+    padding: var(--sp-2xs) 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.03em;
   }
 
   .pricing-header {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--sp-md);
   }
 
   .pricing-tier {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: var(--text-sm);
     color: var(--fg3);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -174,18 +184,18 @@ const plans = [
   .pricing-desc {
     font-size: 0.88rem;
     color: var(--fg2);
-    line-height: 1.6;
+    line-height: 1.618;
     margin-top: 0.75rem;
   }
 
   .pricing-timeline {
     display: flex;
-    gap: 0.5rem;
+    gap: var(--sp-xs);
     align-items: center;
     padding: 0.75rem 0;
     border-top: 0.5px solid var(--border);
     border-bottom: 0.5px solid var(--border);
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--sp-md);
   }
 
   .pricing-timeline-label {
@@ -206,15 +216,15 @@ const plans = [
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: var(--sp-xs);
     flex-grow: 1;
-    margin-bottom: 2rem;
+    margin-bottom: var(--sp-lg);
   }
 
   .pricing-feature {
     display: flex;
     align-items: flex-start;
-    gap: 0.6rem;
+    gap: var(--sp-xs);
     font-size: 0.88rem;
     color: var(--fg2);
     line-height: 1.5;
@@ -233,10 +243,30 @@ const plans = [
     text-align: center;
   }
 
+  /* Tablet: show 2 columns */
   @media (max-width: 960px) {
+    .pricing-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Featured card spans full width on tablet for emphasis */
+    .pricing-card--featured {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 640px) {
     .pricing-grid {
       grid-template-columns: 1fr;
       max-width: 480px;
+    }
+
+    .pricing-card--featured {
+      grid-column: span 1;
+    }
+
+    .pricing-card {
+      padding: var(--sp-md);
     }
   }
 </style>

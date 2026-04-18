@@ -1,7 +1,7 @@
 export const testimonials = [
   {
     stars: 5,
-    quote: 'Gue cuma explain idenya di call pertama, dua minggu kemudian produknya udah jalan. Komunikasinya direct, nggak perlu nunggu approval dari tujuh layer manajer.',
+    quote: 'Saya jelaskan idenya di pertemuan pertama, dua minggu kemudian produknya sudah bisa dipakai. Komunikasi langsung, tidak perlu menunggu approval dari tujuh lapisan manajer.',
     name: 'Andi Pratama',
     role: 'Founder, Finku',
     initials: 'AP',
@@ -9,7 +9,7 @@ export const testimonials = [
   },
   {
     stars: 5,
-    quote: 'POS system yang dibikin buat warung gue sekarang dipake di 5 cabang. Yang bikin kaget, prosesnya cuma 4 minggu dari nol sampai go-live.',
+    quote: 'Sistem POS yang dibuatkan untuk kedai kami sekarang berjalan di 5 cabang. Prosesnya hanya 4 minggu dari nol sampai siap pakai — lebih cepat dari perkiraan kami.',
     name: 'Rina Saputri',
     role: 'Owner, Kopi Tujuh',
     initials: 'RS',
@@ -17,7 +17,7 @@ export const testimonials = [
   },
   {
     stars: 5,
-    quote: 'Landing page perumahan kita udah convert 8% — jauh di atas benchmark industri. Plus sistem booking-nya terintegrasi langsung ke WhatsApp tim sales.',
+    quote: 'Landing page perumahan kami mencapai conversion rate 8% — jauh di atas rata-rata industri. Sistem booking-nya langsung terhubung ke WhatsApp tim sales.',
     name: 'Budi Hartono',
     role: 'COO, Griya Asri',
     initials: 'BH',

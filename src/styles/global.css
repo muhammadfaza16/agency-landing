@@ -28,6 +28,39 @@
   --accent2: #FF6B35;
   --border: rgba(240, 238, 230, 0.08);
   --border2: rgba(240, 238, 230, 0.15);
+
+  /* ─── Golden Ratio Scale (φ = 1.618) ─── */
+  --phi: 1.618;
+
+  /* Typography scale: base 1rem × φⁿ */
+  --text-xs: 0.618rem;    /* 1/φ */
+  --text-sm: 0.72rem;     /* micro labels */
+  --text-base: 1rem;      /* body */
+  --text-lg: 1.125rem;    /* slight bump */
+  --text-xl: 1.618rem;    /* φ¹ */
+  --text-2xl: 2.118rem;   /* sub-headings */
+  --text-3xl: 2.618rem;   /* φ² */
+  --text-4xl: 4.236rem;   /* φ³ */
+  --text-5xl: 6.854rem;   /* φ⁴ */
+
+  /* Spacing scale: base 1rem × φⁿ */
+  --sp-3xs: 0.236rem;     /* φ⁻³ */
+  --sp-2xs: 0.382rem;     /* φ⁻² */
+  --sp-xs: 0.618rem;      /* φ⁻¹ */
+  --sp-sm: 1rem;          /* base */
+  --sp-md: 1.618rem;      /* φ¹ */
+  --sp-lg: 2.618rem;      /* φ² */
+  --sp-xl: 4.236rem;      /* φ³ */
+  --sp-2xl: 6.854rem;     /* φ⁴ */
+  --sp-3xl: 11.089rem;    /* φ⁵ */
+
+  /* Section spacing */
+  --section-pad-y: var(--sp-2xl);       /* 6.854rem desktop */
+  --section-pad-y-mobile: var(--sp-xl); /* 4.236rem mobile */
+
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* ─── Base Reset ─── */
@@ -49,14 +82,14 @@ body {
   font-family: var(--font-display);
   background-color: var(--bg);
   color: var(--fg);
-  line-height: 1.6;
+  line-height: 1.618; /* golden ratio line-height */
   overflow-x: hidden;
 }
 
 /* ─── Typography ─── */
 h1 {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 5vw, 5.5rem);
+  font-size: clamp(2.618rem, 5vw, 5.5rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -65,10 +98,17 @@ h1 {
 
 h2 {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-size: clamp(2rem, 3.5vw, var(--text-3xl));
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.1;
+  color: var(--fg);
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
   color: var(--fg);
 }
 
@@ -80,68 +120,96 @@ em {
 /* ─── Section Label ─── */
 .section-label {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--text-sm);
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--sp-md);
 }
 
 /* ─── Buttons ─── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--sp-xs);
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  padding: 0.85rem 1.75rem;
+  padding: 0.875rem 1.75rem;
+  min-height: 48px;
   background-color: var(--accent);
   color: #0A0A08;
   border: none;
   border-radius: 0;
   cursor: pointer;
   text-decoration: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    transform 0.25s var(--ease-out-expo),
+    box-shadow 0.25s var(--ease-out-expo),
+    opacity 0.2s ease;
   font-weight: 500;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(200, 255, 0, 0.15);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(200, 255, 0, 0.1);
 }
 
 .btn-ghost {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--sp-xs);
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  padding: 0.85rem 1.75rem;
+  padding: 0.875rem 1.75rem;
+  min-height: 48px;
   background-color: transparent;
   color: var(--fg2);
   border: 0.5px solid var(--border2);
   border-radius: 0;
   cursor: pointer;
   text-decoration: none;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition:
+    border-color 0.25s var(--ease-out-expo),
+    color 0.25s var(--ease-out-expo),
+    transform 0.25s var(--ease-out-expo),
+    box-shadow 0.25s var(--ease-out-expo);
   font-weight: 400;
 }
 
 .btn-ghost:hover {
   border-color: var(--fg3);
   color: var(--fg);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(240, 238, 230, 0.04);
+}
+
+.btn-ghost:active {
+  transform: translateY(0);
 }
 
 /* ─── Container ─── */
 .container {
-  max-width: 1200px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 var(--sp-md);
 }
 
 /* ─── Section Spacing ─── */
 .section {
-  padding: 6rem 0;
+  padding: var(--section-pad-y) 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--section-pad-y-mobile) 0;
+  }
 }
 
 /* ─── Ticker / Marquee Animation ─── */
@@ -173,6 +241,24 @@ em {
   background-color: var(--accent);
   border-radius: 50%;
   animation: pulse-dot 2s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(200, 255, 0, 0.3);
+}
+
+/* ─── Fade-in-up utility (for staggered reveals) ─── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.7s var(--ease-out-expo) forwards;
 }
 
 /* ─── Selection ─── */

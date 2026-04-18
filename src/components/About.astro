@@ -1,16 +1,16 @@
 ---
 // About.astro — The Deal section
 const steps = [
-  { num: '01', title: 'Discovery call', detail: 'Diskusi ide dan kelayakan teknis' },
-  { num: '02', title: 'Scope & Proposal', detail: 'Dokumen lingkup kerja + harga tetap' },
-  { num: '03', title: 'Build & Iterate', detail: 'Update mingguan + akses staging' },
-  { num: '04', title: 'Launch & Handoff', detail: 'Deploy dan transfer kepemilikan' },
+  { num: '01', title: 'Discovery Call', detail: 'Diskusi ide, kebutuhan, dan kelayakan teknis' },
+  { num: '02', title: 'Scope & Proposal', detail: 'Lingkup kerja tertulis, harga sudah pasti' },
+  { num: '03', title: 'Build & Iterate', detail: 'Update mingguan, akses staging langsung' },
+  { num: '04', title: 'Launch & Handoff', detail: 'Rilis ke production, kepemilikan penuh diserahkan' },
 ];
 ---
 
 <section id="about" class="section">
   <div class="container about-grid">
-    <!-- Left: Copy -->
+    <!-- Left: Copy (φ proportion — 61.8%) -->
     <div class="about-copy">
       <span class="section-label">// 001 — The deal</span>
       <h2>
@@ -19,17 +19,17 @@ const steps = [
         Sesuatu di antaranya.
       </h2>
       <p class="about-text">
-        Kodacore adalah solo software house yang dirancang untuk efisiensi tingkat tinggi. 
-        Hasilnya: kualitas output setara tim kecil dengan kecepatan eksekusi yang sulit ditandingi. 
-        Anda berbicara langsung dengan pembuatnya — tanpa perantara, tanpa delay birokrasi.
+        Kodacore adalah software house satu orang yang mengutamakan efisiensi. 
+        Hasilnya: kualitas setara tim kecil, tapi bergerak jauh lebih cepat. 
+        Anda bicara langsung dengan orang yang mengerjakan — tanpa lapisan manajer, tanpa menunggu approval.
       </p>
       <p class="about-text">
-        Fokus pada produk nyata, bukan sekadar presentasi. Pengerjaan transparan 
-        dengan timeline yang bisa Anda pegang.
+        Fokusnya produk yang benar-benar jadi, bukan sekadar presentasi. 
+        Pengerjaan terbuka, timeline jelas.
       </p>
     </div>
 
-    <!-- Right: Process Steps -->
+    <!-- Right: Process Steps (38.2%) -->
     <div class="about-steps">
       {steps.map((step) => (
         <div class="step">
@@ -47,8 +47,8 @@ const steps = [
 <style>
   .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1.618fr 1fr; /* golden ratio */
+    gap: var(--sp-xl); /* φ³ */
     align-items: start;
   }
 
@@ -67,13 +67,18 @@ const steps = [
   .step {
     display: flex;
     align-items: flex-start;
-    gap: 1.5rem;
-    padding: 1.5rem 0;
+    gap: var(--sp-md);
+    padding: var(--sp-md) 0; /* φ¹ */
     border-bottom: 0.5px solid var(--border);
+    transition: background-color 0.25s ease;
   }
 
   .step:first-child {
     border-top: 0.5px solid var(--border);
+  }
+
+  .step:hover {
+    background-color: rgba(240, 238, 230, 0.02);
   }
 
   .step-num {
@@ -103,10 +108,10 @@ const steps = [
     color: var(--fg3);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 960px) {
     .about-grid {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: var(--sp-lg);
     }
   }
 </style>

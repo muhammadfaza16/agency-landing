@@ -8,8 +8,8 @@ import { faqs } from '../data/faqs';
     <div class="faq-wrapper">
       <span class="section-label">// 006 — FAQ</span>
       <h2 class="faq-heading">
-        Yang sering<br />
-        <em>ditanyain.</em>
+        Sering<br />
+        <em>ditanya.</em>
       </h2>
 
       <div class="faq-list">
@@ -31,12 +31,12 @@ import { faqs } from '../data/faqs';
 
 <style>
   .faq-wrapper {
-    max-width: 800px;
+    max-width: 730px; /* ~61.8% of 1180px = golden ratio */
     margin: 0 auto;
   }
 
   .faq-heading {
-    margin-bottom: 3rem;
+    margin-bottom: var(--sp-lg);
   }
 
   .faq-list {
@@ -57,20 +57,26 @@ import { faqs } from '../data/faqs';
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    padding: 1.5rem 0;
+    gap: var(--sp-sm);
+    padding: var(--sp-md) 0; /* φ¹ */
+    min-height: 56px; /* generous touch target */
     background: none;
     border: none;
     cursor: pointer;
     text-align: left;
     color: var(--fg);
+    transition: color 0.2s ease;
+  }
+
+  .faq-trigger:hover {
+    color: var(--accent);
   }
 
   .faq-question {
     font-family: var(--font-display);
     font-size: 1.05rem;
     font-weight: 600;
-    color: var(--fg);
+    color: inherit;
   }
 
   .faq-icon {
@@ -78,7 +84,7 @@ import { faqs } from '../data/faqs';
     font-size: 1.25rem;
     color: var(--fg3);
     flex-shrink: 0;
-    transition: transform 0.3s ease, color 0.3s ease;
+    transition: transform 0.4s var(--ease-out-expo), color 0.3s ease;
     width: 1.5rem;
     text-align: center;
   }
@@ -91,7 +97,7 @@ import { faqs } from '../data/faqs';
   .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.3s ease;
+    transition: max-height 0.5s var(--ease-out-expo), padding 0.3s ease;
   }
 
   .faq-item.is-open .faq-answer {
@@ -99,7 +105,7 @@ import { faqs } from '../data/faqs';
   }
 
   .faq-answer p {
-    padding: 0 0 1.5rem 0;
+    padding: 0 0 var(--sp-md) 0;
     font-size: 0.92rem;
     color: var(--fg2);
     line-height: 1.75;

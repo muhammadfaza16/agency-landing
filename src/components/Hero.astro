@@ -6,11 +6,11 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
 
 <section id="hero" class="hero">
   <div class="container hero-grid">
-    <!-- Left: Copy -->
+    <!-- Left: Copy (φ proportion — 61.8%) -->
     <div class="hero-copy">
       <div class="availability-badge">
         <span class="pulse-dot"></span>
-        <span class="badge-text">Tersedia untuk proyek — {currentYear}</span>
+        <span class="badge-text">Menerima proyek baru — {currentYear}</span>
       </div>
 
       <h1>
@@ -20,29 +20,29 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
       </h1>
 
       <p class="hero-sub">
-        Ubah ide Anda menjadi produk digital yang siap digunakan user, bukan sekadar bahan presentasi. Eksekusi cepat, kualitas production-ready, tanpa birokrasi agency.
+        Wujudkan ide menjadi produk digital yang benar-benar dipakai — bukan sekadar bahan presentasi. Proses cepat, hasil siap pakai, langsung dengan pembuatnya.
       </p>
 
       <div class="hero-buttons">
-        <a href="#cta" class="btn-primary">Diskusikan Proyek</a>
-        <a href="#works" class="btn-ghost">Lihat Portofolio</a>
+        <a href="#cta" class="btn-primary">Mulai Diskusi</a>
+        <a href="#works" class="btn-ghost">Lihat Hasil Kerja</a>
       </div>
     </div>
 
-    <!-- Right: Stat Cards -->
+    <!-- Right: Stat Cards (38.2%) -->
     <div class="hero-stats">
-      <div class="stat-card">
-        <span class="stat-label">Waktu Delivery</span>
+      <div class="stat-card" style="--delay: 0.1s;">
+        <span class="stat-label">Waktu Pengerjaan</span>
         <span class="stat-value">3–6 <em>minggu</em></span>
       </div>
 
-      <div class="stat-card">
+      <div class="stat-card" style="--delay: 0.2s;">
         <span class="stat-label">Proyek Tuntas</span>
         <span class="stat-value">12<span class="stat-accent">+</span></span>
       </div>
 
-      <div class="stat-card stat-card-stack">
-        <span class="stat-label">Tech stack utama</span>
+      <div class="stat-card stat-card-stack" style="--delay: 0.3s;">
+        <span class="stat-label">Stack teknologi</span>
         <div class="stat-tags">
           {techStack.map((tech) => (
             <span class="stat-tag">{tech}</span>
@@ -50,7 +50,7 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
         </div>
       </div>
 
-      <div class="stat-card">
+      <div class="stat-card" style="--delay: 0.4s;">
         <span class="stat-label">Slot Proyek</span>
         <div class="stat-status">
           <span class="pulse-dot"></span>
@@ -66,14 +66,14 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 5rem;
-    padding-bottom: 4rem;
+    padding-top: 5.5rem;
+    padding-bottom: var(--sp-xl);
   }
 
   .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1.618fr 1fr; /* golden ratio split */
+    gap: var(--sp-xl);
     align-items: center;
   }
 
@@ -81,15 +81,15 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
   .availability-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 0.9rem;
+    gap: var(--sp-xs);
+    padding: var(--sp-2xs) 0.9rem;
     border: 0.5px solid var(--border2);
-    margin-bottom: 2rem;
+    margin-bottom: var(--sp-lg);
   }
 
   .badge-text {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: var(--text-sm);
     color: var(--fg2);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -100,15 +100,15 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
     font-size: 1.05rem;
     color: var(--fg2);
     line-height: 1.7;
-    margin-top: 1.5rem;
+    margin-top: var(--sp-md);
     max-width: 480px;
   }
 
   /* Buttons */
   .hero-buttons {
     display: flex;
-    gap: 1rem;
-    margin-top: 2.5rem;
+    gap: var(--sp-md);
+    margin-top: var(--sp-lg);
     flex-wrap: wrap;
   }
 
@@ -120,11 +120,14 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
   }
 
   .stat-card {
-    padding: 1.75rem;
+    padding: var(--sp-md);
     border: 0.5px solid var(--border);
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    opacity: 0;
+    animation: fadeInUp 0.6s var(--ease-out-expo) forwards;
+    animation-delay: var(--delay, 0s);
   }
 
   .stat-card-stack {
@@ -159,22 +162,27 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
 
   .stat-tags {
     display: flex;
-    gap: 0.4rem;
+    gap: var(--sp-2xs);
     flex-wrap: wrap;
   }
 
   .stat-tag {
     font-family: var(--font-mono);
     font-size: 0.68rem;
-    padding: 0.3rem 0.6rem;
+    padding: 0.3rem var(--sp-xs);
     border: 0.5px solid var(--border2);
     color: var(--fg2);
+    transition: border-color 0.2s ease;
+  }
+
+  .stat-tag:hover {
+    border-color: var(--fg3);
   }
 
   .stat-status {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--sp-xs);
   }
 
   .stat-status-text {
@@ -184,15 +192,17 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
     font-weight: 500;
   }
 
-  /* Responsive */
-  @media (max-width: 768px) {
-    .hero {
-      padding-top: 6rem;
-    }
-
+  /* ─── Responsive ─── */
+  @media (max-width: 960px) {
     .hero-grid {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: var(--sp-lg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding-top: 6.5rem;
     }
 
     .hero-stats {
@@ -209,6 +219,15 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
     .hero-buttons .btn-ghost {
       text-align: center;
       justify-content: center;
+      width: 100%;
+    }
+
+    .hero-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .stat-card-stack {
+      grid-column: span 1;
     }
   }
 </style>

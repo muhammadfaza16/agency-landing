@@ -8,7 +8,7 @@ import { services } from '../data/services';
     <span class="section-label">// 002 — Services</span>
     <h2 class="services-heading">
       Yang bisa<br />
-      <em>gue bantu.</em>
+      <em>kami kerjakan.</em>
     </h2>
 
     <div class="services-grid">
@@ -32,7 +32,7 @@ import { services } from '../data/services';
 
 <style>
   .services-heading {
-    margin-bottom: 3rem;
+    margin-bottom: var(--sp-lg);
   }
 
   .services-grid {
@@ -42,9 +42,12 @@ import { services } from '../data/services';
   }
 
   .service-card {
-    padding: 2rem;
+    padding: var(--sp-lg); /* φ² */
     border: 0.5px solid var(--border);
-    transition: background-color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      transform 0.3s var(--ease-out-expo);
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -52,6 +55,7 @@ import { services } from '../data/services';
 
   .service-card:hover {
     background-color: var(--bg2);
+    border-color: var(--border2);
   }
 
   .service-icon {
@@ -75,9 +79,9 @@ import { services } from '../data/services';
 
   .service-stack {
     display: flex;
-    gap: 0.35rem;
+    gap: var(--sp-2xs);
     flex-wrap: wrap;
-    margin-top: 0.5rem;
+    margin-top: var(--sp-xs);
   }
 
   .service-tag {
@@ -86,9 +90,20 @@ import { services } from '../data/services';
     padding: 0.25rem 0.5rem;
     border: 0.5px solid var(--border2);
     color: var(--fg3);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .service-card:hover .service-tag {
+    border-color: var(--fg3);
+    color: var(--fg2);
   }
 
   .service-tag--accent {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .service-card:hover .service-tag--accent {
     border-color: var(--accent);
     color: var(--accent);
   }
@@ -102,6 +117,10 @@ import { services } from '../data/services';
   @media (max-width: 540px) {
     .services-grid {
       grid-template-columns: 1fr;
+    }
+
+    .service-card {
+      padding: var(--sp-md);
     }
   }
 </style>
