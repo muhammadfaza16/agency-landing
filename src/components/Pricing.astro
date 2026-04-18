@@ -5,7 +5,7 @@ const plans = [
     tier: 'Starter',
     price: 'Rp 8–15jt',
     unit: '/proyek',
-    desc: 'Cocok untuk landing page atau produk digital dengan cakupan yang sudah jelas dari awal.',
+    desc: 'Solusi untuk landing page atau produk digital dengan lingkup kerja yang terdefinisi jelas.',
     features: [
       'Landing page / marketing site',
       'Responsive design',
@@ -20,7 +20,7 @@ const plans = [
     tier: 'Build',
     price: 'Rp 20–50jt',
     unit: '/proyek',
-    desc: 'Paket andalan untuk startup yang ingin membangun MVP atau web app lengkap.',
+    desc: 'Pilihan utama bagi startup untuk membangun MVP atau web app dengan fitur lengkap.',
     features: [
       'Full-stack web application',
       'Auth + role management',
@@ -38,7 +38,7 @@ const plans = [
     tier: 'Retainer',
     price: 'Rp 10jt',
     unit: '/bulan',
-    desc: 'Pendampingan rutin untuk pengembangan fitur, perbaikan bug, dan peningkatan performa.',
+    desc: 'Dukungan berkelanjutan untuk pengembangan fitur baru, perbaikan, dan optimasi performa.',
     features: [
       '40 jam development/bulan',
       'Fitur baru + bug fixing',
@@ -103,7 +103,15 @@ const plans = [
 
 <style>
   .pricing-heading {
+    margin-bottom: var(--sp-sm);
+  }
+
+  .pricing-anchor {
+    font-size: 0.95rem;
+    color: var(--fg2);
+    line-height: 1.6;
     margin-bottom: var(--sp-lg);
+    max-width: 600px;
   }
 
   .pricing-grid {

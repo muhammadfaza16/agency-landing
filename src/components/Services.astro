@@ -1,31 +1,52 @@
 ---
 // Services.astro — 3x2 service grid
+import { Image } from 'astro:assets';
 import { services } from '../data/services';
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/services/*.{jpeg,jpg,png,gif}');
 ---
 
 <section id="services" class="section">
   <div class="container">
     <span class="section-label">// 002 — Services</span>
     <h2 class="services-heading">
-      Yang bisa<br />
-      <em>kami kerjakan.</em>
+      Layanan<br />
+      <em>Kami.</em>
     </h2>
 
     <div class="services-grid">
-      {services.map((service) => (
-        <div class="service-card">
-          <span class="service-icon">{service.icon}</span>
-          <h3 class="service-name">{service.name}</h3>
-          <p class="service-desc">{service.desc}</p>
-          <div class="service-stack">
-            {service.stack.map((tech) => (
-              <span class={`service-tag ${service.accentStack ? 'service-tag--accent' : ''}`}>
-                {tech}
-              </span>
-            ))}
+      {services.map((service) => {
+        const imagePath = `/src/assets/images/services/${service.imageName}`;
+        const image = images[imagePath];
+
+        return (
+          <div class="service-card">
+            <div class="service-icon-wrapper">
+              {image ? (
+                <Image 
+                  src={image()} 
+                  alt={service.name} 
+                  class="service-illustration"
+                  width={320}
+                  height={320}
+                  quality="high"
+                />
+              ) : (
+                <span class="service-emoji">{service.icon}</span>
+              )}
+            </div>
+            <h3 class="service-name">{service.name}</h3>
+            <p class="service-desc">{service.desc}</p>
+            <div class="service-stack">
+              {service.stack.map((tech) => (
+                <span class={`service-tag ${service.accentStack ? 'service-tag--accent' : ''}`}>
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </div>
 </section>
@@ -50,7 +71,9 @@ import { services } from '../data/services';
       transform 0.3s var(--ease-out-expo);
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    align-items: center;
+    text-align: center;
+    gap: var(--sp-md); /* φ² */
   }
 
   .service-card:hover {
@@ -58,9 +81,35 @@ import { services } from '../data/services';
     border-color: var(--border2);
   }
 
-  .service-icon {
+  .service-icon-wrapper {
+    width: var(--sp-3xl); /* φ⁴ ≈ 110px */
+    height: var(--sp-3xl);
+    margin-bottom: var(--sp-2xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .service-illustration {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    /* Blend mode to discard black pixels */
+    mix-blend-mode: screen;
+    /* Aggressive contrast to crush near-black noise, brightness to pop lines */
+    filter: contrast(1.2) brightness(1.2);
+    /* Radial mask to fade the edges of the image box into transparency */
+    -webkit-mask-image: radial-gradient(circle, white 40%, transparent 75%);
+    mask-image: radial-gradient(circle, white 40%, transparent 75%);
+    transition: transform 0.5s var(--ease-out-expo);
+  }
+
+  .service-card:hover .service-illustration {
+    transform: scale(1.1) rotate(-2deg);
+  }
+
+  .service-emoji {
     font-size: 1.75rem;
-    margin-bottom: 0.25rem;
   }
 
   .service-name {
@@ -81,6 +130,7 @@ import { services } from '../data/services';
     display: flex;
     gap: var(--sp-2xs);
     flex-wrap: wrap;
+    justify-content: center;
     margin-top: var(--sp-xs);
   }
 
