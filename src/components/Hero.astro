@@ -13,14 +13,14 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
         <span class="badge-text">Tersedia untuk proyek — {currentYear}</span>
       </div>
 
-      <h1>
+      <h1 class="text-balance">
         Ide jadi software<br />
         <em>rilis lebih</em><br />
         cepat.
       </h1>
 
-      <p class="hero-sub">
-        Ubah ide Anda menjadi software berkualitas tinggi dalam hitungan minggu. Kami memadukan standar engineering studio profesional dengan ritme kerja yang ramping untuk memastikan visi Anda rilis dengan presisi.
+      <p class="hero-sub text-balance">
+        Ubah ide Anda menjadi software kualitas tinggi dalam hitungan minggu. Kami memadukan standar engineering studio profesional dengan ritme kerja yang ramping untuk memastikan visi Anda rilis dengan presisi.
       </p>
 
       <div class="hero-buttons">
@@ -31,17 +31,17 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
 
     <!-- Right: Stat Cards (38.2%) -->
     <div class="hero-stats">
-      <div class="stat-card" style="--delay: 0.1s;">
+      <div class="stat-card glass-card shadow-deep" style="--delay: 0.1s;">
         <span class="stat-label">Rata-rata pengerjaan</span>
         <span class="stat-value">3–6 <em>minggu</em></span>
       </div>
 
-      <div class="stat-card" style="--delay: 0.2s;">
+      <div class="stat-card glass-card shadow-deep" style="--delay: 0.2s;">
         <span class="stat-label">Proyek selesai</span>
         <span class="stat-value">12<span class="stat-accent">+</span></span>
       </div>
 
-      <div class="stat-card stat-card-stack" style="--delay: 0.3s;">
+      <div class="stat-card glass-card stat-card-stack shadow-deep" style="--delay: 0.3s;">
         <span class="stat-label">Stack teknologi</span>
         <div class="stat-tags">
           {techStack.map((tech) => (
@@ -50,7 +50,7 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
         </div>
       </div>
 
-      <div class="stat-card" style="--delay: 0.4s;">
+      <div class="stat-card glass-card shadow-deep" style="--delay: 0.4s;">
         <span class="stat-label">Kapasitas bulan ini</span>
         <div class="stat-status">
           <span class="pulse-dot"></span>
@@ -97,11 +97,12 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
 
   /* Hero subtext */
   .hero-sub {
-    font-size: 1.05rem;
+    font-size: 1.125rem; /* Proportion: φ⁻¹ scaling */
     color: var(--fg2);
     line-height: 1.7;
     margin-top: var(--sp-md);
-    max-width: 480px;
+    max-width: 520px;
+    font-weight: 400;
   }
 
   /* Buttons */
@@ -121,13 +122,13 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
 
   .stat-card {
     padding: var(--sp-md);
-    border: 0.5px solid var(--border);
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
     opacity: 0;
     animation: fadeInUp 0.6s var(--ease-out-expo) forwards;
     animation-delay: var(--delay, 0s);
+    border-radius: var(--sp-2xs);
   }
 
   .stat-card-stack {
@@ -144,7 +145,7 @@ const techStack = ['Next.js', 'React', 'Supabase', 'Python', 'FastAPI', 'Vercel'
 
   .stat-value {
     font-family: var(--font-display);
-    font-size: 2.25rem;
+    font-size: 2.118rem; /* Proportion: φ² scaling */
     font-weight: 800;
     color: var(--fg);
     letter-spacing: -0.02em;

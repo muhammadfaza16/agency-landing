@@ -13,7 +13,7 @@ import { works } from '../data/works';
 
     <div class="works-grid">
       {works.map((work) => (
-        <article class="work-card">
+        <article class="work-card glass-card glow-hover">
           <div class={`work-thumb work-thumb--${work.color}`}>
             <div class="work-thumb-inner">
               <span class="work-thumb-icon">↗</span>
@@ -21,8 +21,8 @@ import { works } from '../data/works';
           </div>
           <div class="work-body">
             <span class="work-category">{work.category}</span>
-            <h3 class="work-title">{work.title}</h3>
-            <p class="work-desc">{work.desc}</p>
+            <h3 class="work-title text-balance">{work.title}</h3>
+            <p class="work-desc text-balance">{work.desc}</p>
             <div class="work-footer">
               <span class="work-result">{work.result}</span>
               <span class="work-arrow">↗</span>
@@ -42,25 +42,19 @@ import { works } from '../data/works';
   .works-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0;
+    gap: var(--sp-md);
   }
 
   .work-card {
-    border: 0.5px solid var(--border);
-    transition:
-      background-color 0.3s ease,
-      border-color 0.35s var(--ease-out-expo),
-      transform 0.35s var(--ease-out-expo),
-      box-shadow 0.35s var(--ease-out-expo);
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
     cursor: pointer;
+    border-radius: var(--sp-2xs);
   }
 
   .work-card:hover {
-    background-color: var(--bg2);
-    border-color: var(--border2);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transform: translateY(-6px);
   }
 
   .work-card:hover .work-arrow {
@@ -78,18 +72,19 @@ import { works } from '../data/works';
     aspect-ratio: 1.618 / 1; /* golden ratio */
     position: relative;
     overflow: hidden;
+    background-color: var(--bg3);
   }
 
   .work-thumb--accent {
-    background: linear-gradient(135deg, rgba(200, 255, 0, 0.08), rgba(200, 255, 0, 0.02));
+    background: linear-gradient(135deg, rgba(200, 255, 0, 0.12), rgba(200, 255, 0, 0.04));
   }
 
   .work-thumb--accent2 {
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(255, 107, 53, 0.02));
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.12), rgba(255, 107, 53, 0.04));
   }
 
   .work-thumb--neutral {
-    background: linear-gradient(135deg, rgba(240, 238, 230, 0.04), rgba(240, 238, 230, 0.01));
+    background: linear-gradient(135deg, rgba(240, 238, 230, 0.08), rgba(240, 238, 230, 0.02));
   }
 
   .work-thumb-inner {
@@ -98,22 +93,23 @@ import { works } from '../data/works';
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 0.35s ease, transform 0.35s var(--ease-out-expo);
+    opacity: 0.15;
+    transform: scale(0.95);
+    transition: opacity 0.4s ease, transform 0.4s var(--ease-out-expo);
   }
 
   .work-thumb-icon {
-    font-size: 2rem;
-    color: var(--fg2);
+    font-size: 2.5rem;
+    color: var(--fg);
   }
 
   /* Card body */
   .work-body {
-    padding: var(--sp-md); /* φ¹ */
+    padding: var(--sp-md);
     display: flex;
     flex-direction: column;
     gap: var(--sp-xs);
+    flex-grow: 1;
   }
 
   .work-category {
@@ -126,36 +122,45 @@ import { works } from '../data/works';
 
   .work-title {
     font-family: var(--font-display);
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--fg);
+    letter-spacing: -0.01em;
   }
 
   .work-desc {
-    font-size: 0.88rem;
+    font-size: 0.95rem;
     color: var(--fg2);
-    line-height: 1.618; /* golden ratio */
+    line-height: 1.7;
+    margin-bottom: var(--sp-2xs);
   }
 
   .work-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
-    border-top: 0.5px solid var(--border);
+    margin-top: auto;
+    padding-top: var(--sp-md);
+    border-top: 1px solid var(--border);
   }
 
   .work-result {
     font-family: var(--font-mono);
-    font-size: var(--text-sm);
+    font-size: 0.72rem;
     color: var(--accent);
+    font-weight: 500;
   }
 
   .work-arrow {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     color: var(--fg3);
     transition: transform 0.3s var(--ease-out-expo), color 0.3s ease;
+  }
+
+  @media (max-width: 960px) {
+    .works-grid {
+      gap: var(--sp-md);
+    }
   }
 
   @media (max-width: 640px) {

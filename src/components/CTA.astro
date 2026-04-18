@@ -2,15 +2,15 @@
 // CTA.astro — Call to action with email form
 ---
 
-<section id="cta" class="cta-section">
+<section id="cta" class="cta-section glow-hover">
   <div class="container">
-    <div class="cta-inner">
+    <div class="cta-inner glass-card shadow-deep">
       <span class="section-label">// 007 — Let's talk</span>
-      <h2 class="cta-heading">
+      <h2 class="cta-heading text-balance">
         Punya ide?<br />
         <em>Mari bangun bersama.</em>
       </h2>
-      <p class="cta-sub">
+      <p class="cta-sub text-balance">
         Tulis email Anda di bawah. Kami siap mulai dengan diskusi singkat minggu ini.
       </p>
 
@@ -39,30 +39,36 @@
 
 <style>
   .cta-section {
-    padding: var(--sp-2xl) 0; /* φ⁴ */
-    background-color: var(--bg2);
-    border-top: 0.5px solid var(--border);
-    border-bottom: 0.5px solid var(--border);
+    padding: var(--sp-3xl) 0;
+    position: relative;
+    overflow: hidden;
   }
 
   .cta-inner {
     text-align: center;
-    max-width: 618px; /* 1000 × φ⁻¹ */
+    max-width: 800px;
     margin: 0 auto;
+    padding: var(--sp-2xl) var(--sp-xl);
+    border-radius: var(--sp-md);
   }
 
   .cta-inner .section-label {
     display: block;
+    margin-bottom: var(--sp-sm);
   }
 
   .cta-heading {
     margin-bottom: var(--sp-sm);
+    font-size: clamp(2rem, 4vw, 3rem);
   }
 
   .cta-sub {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--fg2);
-    margin-bottom: var(--sp-lg);
+    margin-bottom: var(--sp-xl);
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .cta-form {
@@ -70,20 +76,21 @@
     gap: 0;
     max-width: 500px;
     margin: 0 auto;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
   }
 
   .cta-input {
     flex: 1;
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    padding: 0.875rem 1.25rem;
-    min-height: 48px;
+    font-size: 0.9rem;
+    padding: 1rem 1.5rem;
+    min-height: 56px;
     background-color: var(--bg);
     color: var(--fg);
-    border: 0.5px solid var(--border2);
+    border: 1px solid var(--border2);
     border-radius: 0;
     outline: none;
-    transition: border-color 0.25s var(--ease-out-expo), box-shadow 0.25s ease;
+    transition: border-color 0.3s var(--ease-out-expo), box-shadow 0.3s ease;
   }
 
   .cta-input::placeholder {
@@ -92,12 +99,13 @@
 
   .cta-input:focus {
     border-color: var(--accent);
-    box-shadow: 0 0 0 2px rgba(200, 255, 0, 0.08);
+    box-shadow: 0 0 0 4px rgba(200, 255, 0, 0.05);
   }
 
   .cta-submit {
     flex-shrink: 0;
-    border: 0.5px solid var(--accent);
+    height: 56px;
+    padding: 0 2rem;
   }
 
   .cta-success {
@@ -107,7 +115,8 @@
     gap: var(--sp-xs);
     margin-top: var(--sp-md);
     padding: var(--sp-sm);
-    border: 0.5px solid var(--accent);
+    border: 1px solid var(--accent);
+    background: rgba(200, 255, 0, 0.05);
     animation: fadeInUp 0.5s var(--ease-out-expo) forwards;
   }
 
@@ -123,25 +132,32 @@
 
   .cta-success-text {
     font-family: var(--font-mono);
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     color: var(--accent);
-  }
-
-  @media (max-width: 540px) {
-    .cta-form {
-      flex-direction: column;
-      gap: var(--sp-xs); /* golden ratio gap when stacked */
-    }
-
-    .cta-submit {
-      width: 100%;
-      justify-content: center;
-    }
+    font-weight: 500;
   }
 
   @media (max-width: 768px) {
     .cta-section {
       padding: var(--sp-xl) 0;
+    }
+
+    .cta-inner {
+      padding: var(--sp-xl) var(--sp-md);
+    }
+
+    .cta-form {
+      flex-direction: column;
+      gap: var(--sp-xs);
+    }
+
+    .cta-input {
+      width: 100%;
+    }
+
+    .cta-submit {
+      width: 100%;
+      justify-content: center;
     }
   }
 </style>

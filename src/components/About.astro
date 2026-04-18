@@ -13,12 +13,12 @@ const steps = [
     <!-- Left: Copy (φ proportion — 61.8%) -->
     <div class="about-copy">
       <span class="section-label">// 001 — The deal</span>
-      <h2>
+      <h2 class="text-balance">
         Bukan agency.<br />
         <em>Bukan freelancer.</em><br />
         Sesuatu di antaranya.
       </h2>
-      <p class="about-text">
+      <p class="about-text text-balance">
         Kodacore memadukan standar studio profesional dengan ketangkasan kolaborasi langsung. 
         Sebagai lean software partner, kami fokus pada engineering berkualitas dan transparansi total untuk memastikan visi Anda rilis menjadi produk nyata dengan standar tertinggi.
       </p>
@@ -48,10 +48,11 @@ const steps = [
   }
 
   .about-text {
-    font-size: 1rem;
+    font-size: 1.125rem; /* Proportion: φ⁻¹ sync with Hero */
     color: var(--fg2);
-    line-height: 1.8;
-    margin-top: 1.25rem;
+    line-height: 1.7;
+    margin-top: var(--sp-md);
+    font-weight: 400;
   }
 
   .about-steps {
@@ -93,8 +94,9 @@ const steps = [
   .step-title {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.05rem;
+    font-size: 1.125rem; /* Hierarchy: Primary step info */
     color: var(--fg);
+    letter-spacing: -0.01em;
   }
 
   .step-detail {
