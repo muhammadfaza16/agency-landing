@@ -101,11 +101,17 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/
     /* Radial mask to fade the edges of the image box into transparency */
     -webkit-mask-image: radial-gradient(circle, white 40%, transparent 75%);
     mask-image: radial-gradient(circle, white 40%, transparent 75%);
-    transition: transform 0.5s var(--ease-out-expo);
+    transition: transform 0.8s var(--ease-out-expo);
+    animation: float 6s ease-in-out infinite; /* Movement: Float FX */
+  }
+
+  .service-card:nth-child(even) .service-illustration {
+    animation-delay: -3s; /* Staggered rhythm */
   }
 
   .service-card:hover .service-illustration {
-    transform: scale(1.1) rotate(-2deg);
+    transform: scale(1.1) rotate(-3deg);
+    animation-play-state: paused; /* Pause float on hover for precision */
   }
 
   .service-emoji {

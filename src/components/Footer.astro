@@ -29,8 +29,28 @@ const currentYear = new Date().getFullYear();
 
 <style>
   .footer {
-    padding: var(--sp-lg) 0; /* φ² */
+    padding: var(--sp-2xl) 0 var(--sp-lg);
     border-top: 0.5px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Pattern: KDCR Monogram Motif */
+  .footer::before {
+    content: "KDCR KDCR KDCR KDCR KDCR KDCR KDCR KDCR KDCR KDCR KDCR KDCR KDCR KDCR KDCR KDCR KDCR KDCR KDCR KDCR";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 200%;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 8rem;
+    color: var(--fg);
+    opacity: 0.02;
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.2rem;
+    transform: rotate(-2deg);
   }
 
   .footer-inner {
@@ -38,6 +58,8 @@ const currentYear = new Date().getFullYear();
     align-items: center;
     justify-content: space-between;
     max-width: 1180px;
+    position: relative;
+    z-index: 2;
   }
 
   .footer-logo {

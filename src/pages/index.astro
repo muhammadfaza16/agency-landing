@@ -17,15 +17,50 @@ import Footer from '../components/Footer.astro';
 <BaseLayout>
   <Nav />
   <main>
-    <Hero />
+    <div class="reveal"><Hero /></div>
     <Ticker />
-    <About />
-    <Services />
-    <Works />
-    <Pricing />
-    <Testimonials />
-    <FAQ />
-    <CTA />
+    <div class="reveal"><About /></div>
+    <div class="reveal"><Services /></div>
+    <div class="reveal"><Works /></div>
+    <div class="reveal"><Pricing /></div>
+    <div class="reveal"><Testimonials /></div>
+    <div class="reveal"><FAQ /></div>
+    <div class="reveal"><CTA /></div>
   </main>
   <Footer />
 </BaseLayout>
+
+<style is:global>
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    observer.observe(el);
+  });
+</script>
